@@ -33,12 +33,25 @@ public class MainActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if (username.getText().toString().isEmpty() ) {
+                    username.setError("Username is required!");
+                    return;
+                }
+
+                if (password.getText().toString().isEmpty()) {
+                    password.setError("Password is required!");
+                    return;
+                }
+
+
                 String userInput = username.getText().toString();
                 String passInput = password.getText().toString();
 
-                if (userInput.equals("papsi") && passInput.equals("android")) {
+                if (!userInput.equals("") && !passInput.equals("")) {
                     result.setText("Welcome " + userInput + "!");
-                    result.setTextColor(Color.GREEN);
+                    result.setBackgroundColor(Color.GREEN);
+                    result.setTextColor(Color.DKGRAY);
                 } else {
                     result.setText("Username and Password does not exist!");
                     result.setTextColor(Color.RED);
